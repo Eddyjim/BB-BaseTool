@@ -1,1 +1,4 @@
-PORT = 5555
+PORT = '5000'
+DOMAIN = 'localhost'
+SERVER_NAME = DOMAIN + ':' + PORT
+

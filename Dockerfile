@@ -1,18 +1,16 @@
-FROM ubuntu:16.04
+FROM python:3.9.2
 
-MAINTAINER Your Name "youremail@domain.tld"
+MAINTAINER your name "your.mail@domain.com"
 
-RUN apt-get update -y && \
-    apt-get install -y python-pip python-dev
+RUN apt-get update || : && apt-get install python -y
+RUN apt-get install -y python-dev
 
-COPY ./pip-requirements.txt /app/pip-requirements.txt
-
+RUN mkdir /app
 WORKDIR /app
-
+COPY .. .
+RUN pip install --upgrade pip
 RUN pip install -r pip-requirements.txt
+ENV PYTHONPATH "${PYTHONPATH}:./app"
+EXPOSE 5000
 
-COPY . /app
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+ENTRYPOINT ["gunicorn", "--config", "gunicorn_config.py", "wsgi:application"]
