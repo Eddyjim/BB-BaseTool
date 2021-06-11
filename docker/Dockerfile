@@ -7,7 +7,7 @@ RUN apt-get install -y python-dev
 
 RUN mkdir /app
 WORKDIR /app
-COPY .. .
+COPY ../.. .
 RUN pip install --upgrade pip
 RUN pip install -r pip-requirements.txt
 ENV PYTHONPATH "${PYTHONPATH}:./app"
