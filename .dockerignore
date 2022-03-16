@@ -1,8 +1,6 @@
 #Ignore the logs directory
 logs/
 
-.env
-
 /venv
 
 #Ignoring git and cache folders

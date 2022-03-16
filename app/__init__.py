@@ -34,7 +34,7 @@ def create_app(config=None):
     """
     app = init_app()
     # load default configuration
-    app.config.from_object('conf.settings')
+    app.config.from_object('config.settings')
     # load environment configuration
     if 'FLASK_CONF' in os.environ:
         app.config.from_envvar('FLASK_CONF')
