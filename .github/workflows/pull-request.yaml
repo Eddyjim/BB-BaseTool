@@ -135,6 +135,7 @@ jobs:
       - name: Comment on Pull Request
         if: steps.pre-commit.outputs.failed == 1 && steps.pre-commit.outputs.dirty == 1
         uses: actions/github-script@v6
+
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
